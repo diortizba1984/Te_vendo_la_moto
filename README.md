@@ -82,8 +82,7 @@ https://app.genmymodel.com/api/projects/_THav0G2HEemzHvNogvRQlA/diagrams/_THav02
   
 Ejecutamos el archivo y la aplicacion entrara en fucionamiento.
 
-
-
+Aclizar la base de dat problema con el  servidor
 
 
 
