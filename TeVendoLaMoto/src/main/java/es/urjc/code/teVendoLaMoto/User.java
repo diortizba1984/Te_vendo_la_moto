@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -32,6 +35,19 @@ public class User {
 	private String dni;
 	private String email;
 	private String telefono;
+	
+	@OneToMany (mappedBy="usuario")
+	private List<Anuncio> anuncio;
+	
+	@OneToMany (mappedBy="propietario")
+	private List<Moto> moto;
+	
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	private Venta venta;
+	
+	@OneToOne(cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.EAGER)
+	private OfertaCompra ofertacompra;
 	
 
 	@ElementCollection(fetch = FetchType.EAGER)
@@ -70,12 +86,50 @@ public class User {
 	public String getNombreCompleto() {
 		return nombre_completo;
 	}
-
+	
+	public void removeAnuncio(Anuncio anuncio) {
+		getAnuncio().remove(anuncio);
+		anuncio.setUsuario(null);
+	}
+	
+	public List<Anuncio> getAnuncio() {
+		return anuncio;
+	}	
+	public Venta getVenta() {
+		return venta;
+	}
+	public List<Moto> getMoto() {
+		return moto;
+	}
+	public OfertaCompra getOfertaCompra() {
+		return ofertacompra;
+	}	
+	
 	public void setNombreCompleto(String nombre_completo) {
 		this.nombre_completo = nombre_completo;
 	}
 
-
+	public String getNombre_completo() {
+		return nombre_completo;
+	}
+	public void setNombre_completo(String nombre_completo) {
+		this.nombre_completo = nombre_completo;
+	}
+	public OfertaCompra getOfertacompra() {
+		return ofertacompra;
+	}
+	public void setOfertacompra(OfertaCompra ofertacompra) {
+		this.ofertacompra = ofertacompra;
+	}
+	public void setAnuncio(List<Anuncio> anuncio) {
+		this.anuncio = anuncio;
+	}
+	public void setMoto(List<Moto> moto) {
+		this.moto = moto;
+	}
+	public void setVenta(Venta venta) {
+		this.venta = venta;
+	}
 	public List<String> getRoles() {
 		return roles;
 	}

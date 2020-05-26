@@ -34,12 +34,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/nuevoAnuncio").hasAnyRole("USER");
         http.authorizeRequests().antMatchers("/oferta").hasAnyRole("USER");
         http.authorizeRequests().antMatchers("/anuncio/{id}").hasAnyRole("USER");
+        http.authorizeRequests().antMatchers("/usuario/{id}").hasAnyRole("USER");
         http.authorizeRequests().antMatchers("/verofertas").hasAnyRole("USER");
         
         //Exclusivas del Admin
-        http.authorizeRequests().antMatchers("/admin").hasAnyRole("ADMIN","USER");
-        //http.authorizeRequests().antMatchers("admin/eliminarUsuario").hasAnyRole("ROLE_ADMIN");
-    
+        http.authorizeRequests().antMatchers("/admin").hasAnyRole("ADMIN");
+        http.authorizeRequests().antMatchers("/eliminar/usuario").hasAnyRole("ADMIN");
+        http.authorizeRequests().antMatchers("/eliminarUsuario/*").hasAnyRole("ADMIN");
+        http.authorizeRequests().antMatchers("/listaUsuarios").hasAnyRole("ADMIN");
+        http.authorizeRequests().antMatchers("/listaUsuarios/*").hasAnyRole("ADMIN");
         //http.authorizeRequests().anyRequest().authenticated();
         
         // Login form

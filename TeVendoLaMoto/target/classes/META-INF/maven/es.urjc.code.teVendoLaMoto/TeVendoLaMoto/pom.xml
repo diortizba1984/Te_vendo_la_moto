@@ -13,12 +13,26 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>TeVendoLaMoto</name>
 	<description>AplicacionTeVendoLaMoto</description>
+	<packaging>jar</packaging>
 
 	<properties>
 		<java.version>11</java.version>
 	</properties>
 
 	<dependencies>
+	
+		
+  	<dependency>
+      <groupId>org.springframework.session</groupId>
+      <artifactId>spring-session-hazelcast</artifactId>
+       </dependency>
+
+		
+		<dependency>
+		<groupId>com.hazelcast</groupId>
+		<artifactId>hazelcast</artifactId>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jdbc</artifactId>
@@ -52,6 +66,10 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		 <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
 		<dependency>
    			<groupId>org.springframework.boot</groupId>
    			 <artifactId>spring-boot-starter-security</artifactId>

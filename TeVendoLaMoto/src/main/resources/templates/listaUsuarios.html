@@ -3,7 +3,6 @@
 <head>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 <title>TE VENDO LA MOTO</title></head>
-<link rel="stylesheet" type="text/css" href="index.css">
 
 <body bgcolor="#778899">
 <font size="6" color="#df7644" face="Tahoma">
@@ -11,10 +10,18 @@
 <div style="width: 800px; height: 50px;">
  <h1><font size = 9 color="#87CEFA" face="Candara"> TE VENDO LA MOTO</font></h1>
 </div>
-
-
-	<p>Anuncio guardado Con Exito</p>
-	<a href="/">Volver al tablon</a>
+<h2><font size = 6 color ="#87CEFA" face="Candara">Lista de Usuarios Registrados</font></h2><br>
+ <h3>Pulse sobre los usuarios para ver todos los datos</h3> <br>
+ 
+   {{#usuarios}}
+	<a href="usuario/{{id}}"> Nickname: {{name}} ---- Email: {{email}}</a><br>
+    {{/usuarios}}
+  
+	
+	<p>
+	
+   	  <a href="/admin">Volver a la página ADMIN</a>
+	
 </body>
 
 </html>

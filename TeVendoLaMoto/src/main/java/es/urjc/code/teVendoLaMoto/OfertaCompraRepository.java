@@ -2,10 +2,11 @@ package es.urjc.code.teVendoLaMoto;
 
 import java.util.List;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 
-public interface OfertaCompraRepository extends CrudRepository<OfertaCompra, Long> {
+
+public interface OfertaCompraRepository extends JpaRepository<OfertaCompra, Long> {
 	
 	OfertaCompra findById(long id);
 	

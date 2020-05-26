@@ -3,33 +3,35 @@
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 <title>TE VENDO LA MOTO</title></head>
 <link rel="stylesheet" type="text/css" href="index.css">
+
+<body background = "moto5.jpeg">
+
 	
-<body bgcolor="#cddf89">
+<body bgcolor="#778899">
 <font size="6" color="#df7644" face="Tahoma">
 </font>
-<div style="width: 400px; height: 50px;">
- Te Vendo La Moto
+<div style="width: 800px; height: 50px;">
+  <h1><font size = 9 color="#87CEFA" face="Candara"> TE VENDO LA MOTO</font></h1>
 </div>
 <h3 class="text-black">Opciones de Administrador</h3>
 
 
 {{#admin}}
-<div style="width:1000px; padding:3px;">
+<div style="width:1500px; padding:3px;">
 
 
 
-<div style="width:245px; background:#FFCC00; float:left;"><a href="nuevoAnuncio.html">INSERTAR NUEVO ANUNCIO</a></div>
-<div style="width:245px; background:#CA2BDA; float:left;"><a href="nuevoUsuario.html">REGISTRAR USUARIO</a></div>
-<div style="width:245px; background:#CCFF66; float:left;"><a href="borrar_anuncio.html">ELIMINAR ANUNCIO</a></div>
-<div style="width:245px; background:#CA2BDA; float:left;"><a href="eliminarUsuario.html">ELIMINAR USUARIO</a></div>
-
+<div style="width:245px; background:#FFCC00; float:left;"><a href="nuevoAnuncio">INSERTAR NUEVO ANUNCIO</a></div>
+<div style="width:245px; background:#CA2BDA; float:left;"><a href="nuevoUsuario">REGISTRAR USUARIO</a></div>
+<div style="width:245px; background:#CCFF66; float:left;"><a href="borrar_anuncio">ELIMINAR ANUNCIO</a></div>
+<div style="width:245px; background:#CA2BDA; float:left;"><a href="eliminarUsuario">ELIMINAR USUARIO</a></div>
+<div style="width:245px; background:#CA2BDA; float:left;"><a href="listaUsuarios">LISTAR USUARIOS</a></div>
 <br><br>
-<h3 class="text-black">Base de datos</h3>
-
+<h3> <font size = 5 color="#87CEFA" face="Candara">Base de datos:</font></h3>
 
 <ul>
 	<li>
-	<a href="#" class="text-black">{{usuarios}} usuarios | </a>
+	<a href="#" class="text-black">{{usuariosCount}} usuarios | </a>
 	<a href="#" class="text-black"> {{anunciosCount}} anuncios | </a>
 	<a href="#" class="text-black"> {{motos}} motos</a>
 	</li>
@@ -37,8 +39,9 @@
 {{/admin}}
 
 
-<br><br>
+<br>
 </div> 
+<h3> <font size = 5 color="#87CEFA" face="Candara">Anuncios Publicados:</font></h3><br>
 
 {{#anuncios}}
 <div style="color: blue;">	
@@ -54,6 +57,6 @@
        <input type="hidden" name="_csrf" value="{{token}}"/>
        </form>
 </div>
-
+<p><a href="/">Volver a la pagina principal</a></p>
 </body>
 </html>

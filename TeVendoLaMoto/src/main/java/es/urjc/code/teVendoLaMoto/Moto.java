@@ -1,11 +1,15 @@
 package es.urjc.code.teVendoLaMoto;
 
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 
@@ -28,16 +32,24 @@ public class Moto {
     private int anioMatriculacion;
     private double precio;
     
-	@OneToOne
+	@ManyToOne
+  
 	private User propietario;
+	
+	@OneToOne
+	
+	private Anuncio anuncio;
     
-    protected Moto(){}
+    
+
+	protected Moto(){}
 
     public Moto(String matricula, String marca, String modelo, String color,int cilindrada, double kilometros, int anioMatriculacion, double precio, User propietario)
     {
     	super();
     	this.matricula = matricula;
         this.marca = marca;
+        this.modelo = modelo;
         this.color = color;
         this.cilindrada = cilindrada;
         this.kilometros = kilometros;
@@ -118,7 +130,13 @@ public class Moto {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
-    
+    public Anuncio getAnuncio() {
+		return anuncio;
+	}
+
+	public void setAnuncio(Anuncio anuncio) {
+		this.anuncio = anuncio;
+	}
     public User getPropietario() {
         return propietario;
     }

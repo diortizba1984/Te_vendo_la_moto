@@ -4,7 +4,7 @@
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 <title>TE VENDO LA MOTO</title></head>
 
-<body bgcolor="#cddf89">
+<body bgcolor="#778899">
 
 <font size="6" color="#df7644" face="Tahoma">
 </font>
@@ -12,21 +12,29 @@
   <h2> Eliminar Usuario</h2> 
 </div>
 
-	<form action="/eliminarUsuario" method="post">
+<td><label>Lista de Usuarios Registrados:</label></td><br><br>
+
+  {{#usuarios}}
+	  <a href="usuario/{{id}}"> Nombre: {{nombre_completo}}-- DNI: {{dni}}--  Email: {{email}}</a><br>
+       {{/usuarios}}
+<br><br>
+
+	<form action="/eliminar/usuario" method="post">
 		<table class="egt">
 		  <tr>
-		    <td><label>User Name:</label></td>
-		    <td><input type="text" name="username" /></td>
+		    <td><label>DNI del usuario:</label></td>
+		    <td><input type="text" name="dni" /></td>
 		  </tr>
-		  
+		
 		</table>
 	
-		
-		
+			
 		<input type="submit" value="Eliminar" /><br />
 		<input type="hidden" name="_csrf" value="{{token}}"/>
 	</form>
+	
 		
+   <br>
    	  <br><a href="/admin">Volver a la pagina de Administrador</a>
 	
 </body>

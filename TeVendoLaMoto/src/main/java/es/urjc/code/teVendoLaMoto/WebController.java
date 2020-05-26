@@ -4,13 +4,11 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.web.csrf.CsrfToken;
+
 import org.springframework.stereotype.Controller;
 //import org.springframework.web.bind.annotation.RestController;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class WebController{
@@ -59,17 +57,40 @@ public class WebController{
 		return "nuevoAnuncio";
     }
 	
-	@GetMapping("/eliminarUsuario")
-    public String eliminarUsuario(Model model, HttpServletRequest request, Pageable page) {
-    	model.addAttribute("admin", request.isUserInRole("ADMIN"));
-		return "eliminarUsuario";
-    }
-	
 	@GetMapping("/borrar_anuncio")
-    public String borraranuncio(Model model, HttpServletRequest request, Pageable page) {
+    public String borrarAnuncio(Model model, HttpServletRequest request, Pageable page) {
     	model.addAttribute("admin", request.isUserInRole("ADMIN"));
 		return "borrar_anuncio";
     }
+	
+	@GetMapping("/eliminarUsuario")
+    public String eliminarUsuario(Model model, HttpServletRequest request, Pageable page) {
+    	model.addAttribute("admin", request.isUserInRole("ADMIN"));
+    	model.addAttribute("usuarios", usuarioRepository.findAll(page));
+		return "eliminarUsuario";
+    }
+	
+	@GetMapping("/listaUsuarios")
+    public String listaUsuarios(Model model, HttpServletRequest request, Pageable page) {
+    	model.addAttribute("admin", request.isUserInRole("ADMIN"));
+    	model.addAttribute("usuarios", usuarioRepository.findAll(page));
+		return "listaUsuarios";
+    }
+	
+	/*@GetMapping("user/listaUsuarios")
+    public String listaUsuario(Model model, HttpServletRequest request, Pageable page) {
+    	model.addAttribute("admin", request.isUserInRole("ADMIN"));
+		return "user/listaUsuarios";
+	}*/
+    
+		
+	/*@GetMapping("/borrar_anuncio")
+    public String borraranuncio(Model model, HttpServletRequest request, Pageable page) {
+    	model.addAttribute("admin", request.isUserInRole("ADMIN"));
+		return "borrar_anuncio";
+    }*/
+	
+	//quitar si no funciona
 	/*@GetMapping("/verofertas")
     public String verofertas(Model model, HttpServletRequest request, Pageable page) {
     	model.addAttribute("admin", request.isUserInRole("ADMIN"));
@@ -94,15 +115,18 @@ public class WebController{
     
     
     
+    
+    
     @GetMapping("/admin")
 	public String index(Model model, HttpServletRequest request,Pageable page) { 
 		
-    	//String nombre = request.getUserPrincipal().getName();
+    	//String name = request.getUserPrincipal().getName();
     	model.addAttribute("admin", request.isUserInRole("ADMIN"));
     	model.addAttribute("anuncios", repository.findAll(page));
+    	//model.addAttribute("usuarios", usuarioRepository.findAll(page));
 		model.addAttribute("anunciosCount", repository.count());
 		model.addAttribute("usuariosCount", usuarioRepository.count());
-		//model.addAttribute("usuarios",usuarioRepository.findByName(nombre));
+		//model.addAttribute("usuarios",usuarioRepository.findByEmail(name));
 		model.addAttribute("motos", motoRepository.count());
 		model.addAttribute("ofertaCompra", ofertaCompraRepository.count());
 		model.addAttribute("venta", ventaRepository.count());

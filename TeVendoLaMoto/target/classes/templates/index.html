@@ -3,37 +3,52 @@
 <head>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 <title>TE VENDO LA MOTO</title></head>
+<link rel="stylesheet" type="text/css" href="index.css">
 
-<body bgcolor="#cddf89">
-<font size="6" color="#df7644" face="Tahoma">
-</font>
-<div style="width: 400px; height: 50px;">
- Te Vendo La Moto
+<body background = "moto4.jpg">
+<div style=" text-alignt : center">
+<h1><font size = 9 color="#87CEFA" face="Candara"> TE VENDO LA MOTO</font></h1>
+ 
+ <br>
+ <p><font size = 4>Bienvenido al portal de compra-venta de motos más utilizado en España</font></p>
 </div>
-
-
+<br>
+<br>
 <div style="width:1000px; padding:3px;">
-
+{{#user}}
 <div style="width:245px; background:#FFCC00; float:left;"><a href="nuevoAnuncio">NUEVO ANUNCIO</a></div>
 <div style="width:245px; background:#CCFF66; float:left;"><a href="ver_ofertas">MIS OFERTAS</a></div>
-<div style="width:245px; background:#CA2BDA; float:left;"><a href="nuevoUsuario">REGISTRARME</a></div>
-<div style="width:245px; background:#CA2BDA; float:left;"><a href="login.html">IDENTIFICARME</a></div>
+{{/user}}
+<div style="width:245px; background:#ADFF2F; float:left;"><a href="nuevoUsuario">REGISTRARME</a></div>
+<div style="width:245px; background:#ADFF2F; float:left;"><a href="login">IDENTIFICARME</a></div>
 
 <br><br>
+
 </div> 
+<br>
+<p><font size = 5 color="#7CFC00" face="Candara"><b>Anuncios Recientes:</b></font></p>
+<br>
 {{#anuncios}}
-<div style="color: blue;">	
-	<a href="anuncio/{{id}}">{{nombre}} {{asunto}}</a><br>
+<div style="color: red;">	
+	
+	<a href="anuncio/{{id}}">{{nombre}} {{asunto}} </a><br>
+
 </div>
+
 {{/anuncios}} 
  <br><br><br>
+ 
  	{{#admin}}
 	<a href="/admin">Admin Page</a>
 	{{/admin}}
+
 <br><br>
+	    
+	{{#user}}
 	<form action="/logout" method="post">
 		<input type="submit" value="Sign Out" />
 		<input type="hidden" name="_csrf" value="{{token}}"/>
 	</form>
-	
+	{{/user}}
+
 </body></html>

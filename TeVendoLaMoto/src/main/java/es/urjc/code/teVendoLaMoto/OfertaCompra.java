@@ -2,10 +2,15 @@ package es.urjc.code.teVendoLaMoto;
 
 
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 
@@ -22,14 +27,15 @@ public class OfertaCompra {
     private Double precioOferta;
     
 
-    @OneToOne
-    private User comprador;
+    @OneToOne 
+     private User comprador;
     
     @OneToOne
     private User vendedor;
     
-	@OneToOne
+	@OneToOne 
 	private Moto moto;
+	
 	protected OfertaCompra() {}
 	public OfertaCompra(String fOferta, Double precioOferta) {
 		

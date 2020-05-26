@@ -2,6 +2,7 @@ package es.urjc.code.teVendoLaMoto;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
@@ -12,10 +13,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 //import org.springframework.web.bind.annotation.RestController;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 //import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 //import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -63,7 +67,7 @@ import es.urjc.code.teVendoLaMoto.UserRepository;
 			User u1 = new User("dortiz","dortizpass","Damian Ortiz Barahona","50574692D","demn007@gmail.com","648799392","ROLE_USER");
 			User u2 = new User("prodriguez","prodriguezpass","Paula Rodriguez de Zoluaga","73263327S","prr.zoluaga@wanadoo.com","64537872", "ROLE_USER");
 			User u3 = new User("btercero","bterceropass","Benedicto tercero","59563719W","benedict@plus.com","634522718","ROLE_USER"); 
-			User u4 = new User("pptoledo","pptoledopass","Pedro Toledo","83826171S","pptole@gmail.com","739993816","ROLE_USER", "ROLE_ADMIN");
+			User u4 = new User("admin","adminpass","Administrador_General","55555566N","admin@admin.com","739993816","ROLE_USER", "ROLE_ADMIN");
 			User u5 = new User("armando","armandopass","Armando Elslam ","83826171S","sta@plas.com","7651591","ROLE_USER");
 			
 		
@@ -127,7 +131,8 @@ import es.urjc.code.teVendoLaMoto.UserRepository;
 
 			//String nombre = request.getUserPrincipal().getName();
 			model.addAttribute("anuncios", repository.findAll(page));
-			model.addAttribute("usuarios", usuarioRepository.count());
+			model.addAttribute("usuarios", usuarioRepository.findAll(page));
+			model.addAttribute("usuariosCounter", usuarioRepository.count());
 			//model.addAttribute("usuarios",usuarioRepository.findByEmail(nombre));
 			model.addAttribute("motos", motoRepository.count());
 			model.addAttribute("ofertaCompra", ofertaCompraRepository.count());
@@ -138,67 +143,7 @@ import es.urjc.code.teVendoLaMoto.UserRepository;
 			return "index";
 		}
 		
-	   /*@GetMapping("/login")
-	    public String login() {
-	    	return "login";
-	    }
-		/*@RequestMapping (value="/login", method={RequestMethod.POST,RequestMethod.GET})
-		public String login(Model model, HttpServletRequest request) {
-			CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
-			model.addAttribute("token", token.getToken());
-			return "login";
-		}*/
-	    
-	    /*@GetMapping("/logout")
-	    public String logout() {
-	    	return "logout";
-	    }*/
-	    
-	    /*he modificado*/
-	    /*@GetMapping("/eliminarUsuario")
-	    public String eliminarUsuario() {
-	    	return "eliminarUsuario";
-	    }
-	    
-	    @GetMapping("/borrar_anuncio")
-	    public String borrarAnuncio() {
-	    	return "borrar_anuncio";
-	    }
-	    
-	    
-	    
-	    @GetMapping("/nuevoUsuario")
-	    public String nuevoUsuario() {
-	    	return "nuevoUsuario";
-	    }
-	    
-	    @GetMapping("/nuevoAnuncio")
-	    public String nuevoAnuncio() {
-	    	return "anuncioNuevo";
-	    }*/
-	    /*He modificado este apartado*/
-	    /*@GetMapping("/admin")
-	    public String adminpane(Model model, Pageable page,HttpServletRequest request) {
-	    	
-
-			model.addAttribute("anuncios", repository.findAll(page));
-			model.addAttribute("anunciosCount", repository.count());
-			model.addAttribute("usuarios", usuarioRepository.count());
-			model.addAttribute("motos", motoRepository.count());
-			model.addAttribute("admin", request.isUserInRole("ROLE_ADMIN"));
-			
-	    	return "admin";
-	    }*/
-	    
-	    /*@GetMapping("/error_login")
-	    public String loginerror() {
-	    	return "error_login";
-	    } */   
-	    
-	    /*@RequestMapping("/bienvenidalogin")
-	    public String bienvenidaLogin() {
-	    	return "bienvenidalogin";
-	    }*/
+	  
 		
 		@RequestMapping("/ver_ofertas")
 		public String tablon(Model model,HttpServletRequest request) {
@@ -250,19 +195,9 @@ import es.urjc.code.teVendoLaMoto.UserRepository;
 				return "usuario_guardado";
 			}
 			
-
-			
-			
-
-		}		
+	}		
 		
-		@RequestMapping("/moto/nuevo")
-		public String nuevoAnuncio(Model model, Moto moto) {
-
-			motoRepository.save(moto);
-			return "nuevoAnuncio";
-
-		}
+		
 		
 		@RequestMapping("/anuncio/{id}")
 		public String verAnuncio(Model model, @PathVariable long id) {
@@ -274,17 +209,27 @@ import es.urjc.code.teVendoLaMoto.UserRepository;
 			return "ver_anuncio";
 		}
 		
+		@RequestMapping("/usuario/{id}")
+        public String verUsuario(Model model, @PathVariable long id) {
+			
+			//model.addAttribute("user", usuarioRepository.findAll(page));
+			User usuario = usuarioRepository.findById(id);
+			model.addAttribute("usuarios", usuario);
+			
+			return "ver_usuario";
+		}
 		
-		/*@PostMapping("/nuevoUsuario")
-		public String nuevoUsuario(Model model, User usuario,HttpServletRequest request) {
+		@RequestMapping(value="/usuario/lista", method=RequestMethod.GET)
+        public String listaUsuario(Model model, Pageable page, HttpServletRequest request) {
 			
-			
-			usuario.setRoles((new ArrayList<>(Arrays.asList("ROLE_USER"))));
-			usuarioRepository.save(usuario);
-			
-			return "usuario_guardado";
-			
-		}*/
+			model.addAttribute("usuarios", usuarioRepository.findAll(page));
+			//model.addAttribute("usuarios", usuarioRepository.findAll(page));
+			//User usuario = usuarioRepository.findById(id);
+			//model.addAttribute("usuarios",usuario);
+			return "listaUsuarios";
+		}
+		
+		
 		
 		
 		@RequestMapping("/vender")
@@ -335,64 +280,43 @@ import es.urjc.code.teVendoLaMoto.UserRepository;
 
 		}
 		
-		@RequestMapping("/eliminarUsuario")
-		public String eliminaUsuario(Model model, @RequestParam String name)
+		//he retocado para comprobar cambiando a dni, sigue retocado
+		
+		@RequestMapping(value="/eliminar/usuario", method=RequestMethod.POST)
+		public String eliminarUsuario (Model model,  @RequestParam (value="dni") String dni, Pageable page)
 		{
-			User usu = usuarioRepository.findByName (name);
-			usuarioRepository.deleteById(usu.getId());
-			return "usuario_eliminado";
+			List<User> user = usuarioRepository.findByDni(dni);
+			model.addAttribute("usuarios", usuarioRepository.findAll(page));
+			//User usuario = usuarioRepository.findById(id);
+			model.addAttribute("user", user);
 			
+			//User usu = usuarioRepository.findByEmail(email);
+		     
+			usuarioRepository.deleteAll(user);
+				
+		//	}
+			return "usuario_eliminado";
 		}
 		
-
-		@RequestMapping("/borrar_anuncio")
-		public String eliminaAnuncio(Model model, @RequestParam String matricula)
+			
+		@RequestMapping(value="/borrar/anuncio", method=RequestMethod.POST)
+		public String eliminaAnuncio(Model model, @RequestParam (value="matricula") String matricula)
 		{
 			Moto co = motoRepository.findByMatricula(matricula);
 			//motoRepository.delete(co.getId());
 			Anuncio anu = repository.findByMoto(co);
+			//List <Anuncio> anu = (List<Anuncio>) repository.findByMoto(co))
+			//Anuncio anu = repository.findByNombre(matricula);
+			
 			repository.deleteById(anu.getId());
-			//motoRepository.delete(co.getId());
+			//motoRepository.deleteById(co.getId());
+			//motoRepository.delete(co);
+			//repository.deleteAll(anu);
 			return "anuncio_eliminado";
 			
 		}
 		
-		/*@RequestMapping("admin/usuario/nuevo")
-		public String nuevosUsuario(Model model,@RequestParam String name,@RequestParam String password, @RequestParam String nombre_completo, 
-				@RequestParam String dni,@RequestParam String email,@RequestParam String telefono) {
-
-			
-			User u = new User(name,password,nombre_completo,dni,email,telefono,"ROLE_USER");
-			usuarioRepository.save(u);
-			
-
-			
-			return "usuario_guardado";
-		}*/
 		
-		/*@RequestMapping("/admin/anuncio/nuevo")
-		public String nuevosAnuncio(Model model, @RequestParam String nombre, 
-				@RequestParam String asunto,@RequestParam String matricula,@RequestParam String marca,
-				@RequestParam String modelo,@RequestParam String color,@RequestParam int cilindrada, @RequestParam double kilometros,@RequestParam int anioMatriculacion,
-				@RequestParam double precio,HttpServletRequest request) {
-
-			User u = usuarioRepository.findByName(request.getUserPrincipal().getName());
-			
-			
-			
-			Moto c = new Moto(matricula, marca,modelo,color,cilindrada, kilometros,anioMatriculacion,precio,u);
-			motoRepository.save(c);
-			
-			Anuncio a = new Anuncio(nombre,asunto);
-			
-			a.setMoto(c);
-			a.setUsuario(u);
-			
-			repository.save(a);
-			
-			return "anuncio_guardado";
-
-		}*/
 	
 	}
 	
