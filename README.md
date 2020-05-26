@@ -62,8 +62,8 @@ user: admin@admin.com
 password: adminpass
 
 -Configuracion Mysql
-user: admin@localhost
-pass: administrador
+user: admin@localhost-->
+pass: administrador-->
 base de datos: tevendolamoto
 
 - Verificamos que nuestro proyecto sea MAVEN en el archivo POM
