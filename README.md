@@ -61,6 +61,11 @@ https://app.genmymodel.com/api/projects/_THav0G2HEemzHvNogvRQlA/diagrams/_THav02
 user: admin@admin.com   
 password: adminpass
 
+-Configuracion Mysql
+user: admin@localhost
+pass: administrador
+base de datos: tevendolamoto
+
 - Verificamos que nuestro proyecto sea MAVEN en el archivo POM
 
 ![pom_maven](https://github.com/diortizba1984/Te_vendo_la_moto/blob/master/Diagramas/maven.png)
