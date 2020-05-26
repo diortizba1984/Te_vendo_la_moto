@@ -56,6 +56,10 @@ https://app.genmymodel.com/api/projects/_THav0G2HEemzHvNogvRQlA/diagrams/_THav02
     - Java 11
     - Open JDK JAVA 11
     - Mysql 5.7.29
+    
+-Los datos para iniciar la aplicacion son:
+user: admin@admin.com   
+password: adminpass
 
 - Verificamos que nuestro proyecto sea MAVEN en el archivo POM
 
