@@ -99,10 +99,11 @@ Para implementar las técnicas de tolerancia a fallos utilizamos Azure para desp
 - Servidor con caché
 
 -Diagrama Azure
-![Diagrama Azure](https://github.com/diortizba1984/Te_vendo_la_moto/blob/master/Diagramas/azure.png)
+
+![Diagrama Azure](https://github.com/diortizba1984/Te_vendo_la_moto/blob/master/Diagramas/azure.PNG)
 
 - Generamos certificado PEM para Azure
-![Certificado Pem](https://github.com/diortizba1984/Te_vendo_la_moto/blob/master/Diagramas/pem.png)
+![Certificado Pem](https://github.com/diortizba1984/Te_vendo_la_moto/blob/master/Diagramas/pem.PNG)
 
 
 - Una vez que tenemos Azure activo creamos 4 servidores:
@@ -111,14 +112,14 @@ Para implementar las técnicas de tolerancia a fallos utilizamos Azure para desp
 	+BBDD MySQL server
 	+Web01--->Aplicación
 	+Web02 -->Aplicación
-![Servidores](https://github.com/diortizba1984/Te_vendo_la_moto/blob/master/Diagramas/servidores.png)
+![Servidores](https://github.com/diortizba1984/Te_vendo_la_moto/blob/master/Diagramas/servidores.PNG)
 
 
 
 - Configuramos el servidor Mysql server 
 -->Creamos la base de datos para nuestra aplicación
 
-![BBDD](https://github.com/diortizba1984/Te_vendo_la_moto/blob/master/Diagramas/bbdd.png)
+![BBDD](https://github.com/diortizba1984/Te_vendo_la_moto/blob/master/Diagramas/bbdd.PNG)
 
 -->Creamos 2 usuarios para conectar con los servidores de la aplicacion, les concedemos todos los privilegios para la BBDD.
 
@@ -131,27 +132,34 @@ Cambie la línea bind-address = 127.0.0.1, a bind-address = <ip del servidor mys
 
 - Copiamos la aplicación JAR desde nuestro sistema local a los dos servidores web que creamos
 
-![Subir aplicación a MV](https://github.com/diortizba1984/Te_vendo_la_moto/blob/master/Diagramas/subirvm.png)
+![Subir aplicación a MV](https://github.com/diortizba1984/Te_vendo_la_moto/blob/master/Diagramas/subirvm.PNG)
 
 - Configuramos el balanceador
 
 Modificamos el archivo haproxy.cfg y lo dejamos como la captura de pantalla siguiente:
 
-![HAPROXY](https://github.com/diortizba1984/Te_vendo_la_moto/blob/master/Diagramas/haproxy.png)
+![HAPROXY]
+(https://github.com/diortizba1984/Te_vendo_la_moto/blob/master/Diagramas/haproxy.PNG)
 
 Comprobamos si esta activo
 
-![HAPROXY ACTIVO](https://github.com/diortizba1984/Te_vendo_la_moto/blob/master/Diagramas/activo.png)
+![HAPROXY ACTIVO]
+(https://github.com/diortizba1984/Te_vendo_la_moto/blob/master/Diagramas/activo.png)
 
 Ejecutamos las aplicaciones en los servidores, en la instrucciones incluimos los parametros como se va a conectar.
 Para utilizar la BBDD separada debemos incluir la sentencia:
 spring.jpa.hibernate.ddl-auto = none
 
-![APLICACION](https://github.com/diortizba1984/Te_vendo_la_moto/blob/master/Diagramas/aplicacion.png)
+![APLICACION]
+https://github.com/diortizba1984/Te_vendo_la_moto/blob/master/Diagramas/aplicacion.PNG)
 
 Miramos el status del HAPROXY y vemos que los dos servidores de la aplicacion esta funcionando, en la captura siguiente he parado un servidor y la aplicacion seguia funcionando.
 
-![STATUS HAPROXY](https://github.com/diortizba1984/Te_vendo_la_moto/blob/master/Diagramas/status.png)
+![STATUS HAPROXY] (https://github.com/diortizba1984/Te_vendo_la_moto/blob/master/Diagramas/status.PNG)
+
+
+
+
 
 
 
