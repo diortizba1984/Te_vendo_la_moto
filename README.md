@@ -138,24 +138,21 @@ Cambie la línea bind-address = 127.0.0.1, a bind-address = <ip del servidor mys
 
 Modificamos el archivo haproxy.cfg y lo dejamos como la captura de pantalla siguiente:
 
-![HAPROXY]
-(https://github.com/diortizba1984/Te_vendo_la_moto/blob/master/Diagramas/haproxy.PNG)
+![HAPROXY](https://github.com/diortizba1984/Te_vendo_la_moto/blob/master/Diagramas/haproxy.PNG)
 
 Comprobamos si esta activo
 
-![HAPROXY ACTIVO]
-(https://github.com/diortizba1984/Te_vendo_la_moto/blob/master/Diagramas/activo.png)
+![HAPROXY ACTIVO](https://github.com/diortizba1984/Te_vendo_la_moto/blob/master/Diagramas/activo.png)
 
 Ejecutamos las aplicaciones en los servidores, en la instrucciones incluimos los parametros como se va a conectar.
 Para utilizar la BBDD separada debemos incluir la sentencia:
 spring.jpa.hibernate.ddl-auto = none
 
-![APLICACION]
-https://github.com/diortizba1984/Te_vendo_la_moto/blob/master/Diagramas/aplicacion.PNG)
+![APLICACION](https://github.com/diortizba1984/Te_vendo_la_moto/blob/master/Diagramas/aplicacion.PNG)
 
 Miramos el status del HAPROXY y vemos que los dos servidores de la aplicacion esta funcionando, en la captura siguiente he parado un servidor y la aplicacion seguia funcionando.
 
-![STATUS HAPROXY] (https://github.com/diortizba1984/Te_vendo_la_moto/blob/master/Diagramas/status.PNG)
+![STATUS HAPROXY](https://github.com/diortizba1984/Te_vendo_la_moto/blob/master/Diagramas/status.PNG)
 
 
 
