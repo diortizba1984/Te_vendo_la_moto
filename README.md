@@ -100,7 +100,7 @@ Para implementar las técnicas de tolerancia a fallos utilizamos Azure para desp
 
 -Diagrama Azure
 
-![Diagrama Azure](https://github.com/diortizba1984/Te_vendo_la_moto/blob/master/Diagramas/azure.PNG)
+![Diagrama Azure](https://github.com/diortizba1984/Te_vendo_la_moto/blob/master/Diagramas/azure1.PNG)
 
 - Generamos certificado PEM para Azure
 ![Certificado Pem](https://github.com/diortizba1984/Te_vendo_la_moto/blob/master/Diagramas/pem.PNG)
