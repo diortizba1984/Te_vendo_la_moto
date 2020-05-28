@@ -26,7 +26,7 @@ Un Administrador puede borrar anuncios que no cumplan la normativa o dar de baja
 ##Tablero TRELLO
 - https://trello.com/b/BlmwYZA0/te-vendo-la-moto
 
-#FASE 2
+##FASE 2
 ##DIAGRAMAS: 
 ###- CAPTURAS DE PANTALLA:
 
@@ -91,7 +91,7 @@ https://app.genmymodel.com/api/projects/_THav0G2HEemzHvNogvRQlA/diagrams/_THav02
   
 Ejecutamos el archivo y la aplicación entrara en funcionamiento.
 
-#FASE 3
+##FASE 3
 
 Para implementar las técnicas de tolerancia a fallos utilizamos Azure para desplegar la aplicación. Vamos a utilizar las siguientes técnicas:
 - Balanceador de carga HAPROXY
