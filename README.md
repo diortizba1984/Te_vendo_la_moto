@@ -100,7 +100,7 @@ Para implementar las técnicas de tolerancia a fallos utilizamos Azure para desp
 
 -Diagrama Azure
 
-![Diagrama Azure](https://github.com/diortizba1984/Te_vendo_la_moto/blob/master/Diagramas/azure1.PNG)
+![Diagrama Azure](https://github.com/diortizba1984/Te_vendo_la_moto/blob/master/Diagramas/azure1.JPG)
 
 - Generamos certificado PEM para Azure
 ![Certificado Pem](https://github.com/diortizba1984/Te_vendo_la_moto/blob/master/Diagramas/pem.PNG)
@@ -142,7 +142,7 @@ Modificamos el archivo haproxy.cfg y lo dejamos como la captura de pantalla sigu
 
 Comprobamos si esta activo
 
-![HAPROXY ACTIVO](https://github.com/diortizba1984/Te_vendo_la_moto/blob/master/Diagramas/activo.png)
+![HAPROXY ACTIVO](https://github.com/diortizba1984/Te_vendo_la_moto/blob/master/Diagramas/activo.PNG)
 
 Ejecutamos las aplicaciones en los servidores, en la instrucciones incluimos los parametros como se va a conectar.
 Para utilizar la BBDD separada debemos incluir la sentencia:
