@@ -2,6 +2,9 @@
 <head>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 <title>TE VENDO LA MOTO</title></head>
+<link rel="stylesheet" type="text/css" href="index.css">
+
+<body background = "moto5.jpeg">
 
 	
 <body bgcolor="#778899">
@@ -14,7 +17,7 @@
 
 
 {{#admin}}
-<div style="width:1000px; padding:3px;">
+<div style="width:1500px; padding:3px;">
 
 
 
@@ -22,10 +25,9 @@
 <div style="width:245px; background:#CA2BDA; float:left;"><a href="nuevoUsuario">REGISTRAR USUARIO</a></div>
 <div style="width:245px; background:#CCFF66; float:left;"><a href="borrar_anuncio">ELIMINAR ANUNCIO</a></div>
 <div style="width:245px; background:#CA2BDA; float:left;"><a href="eliminarUsuario">ELIMINAR USUARIO</a></div>
-
+<div style="width:245px; background:#CA2BDA; float:left;"><a href="listaUsuarios">LISTAR USUARIOS</a></div>
 <br><br>
-<h3 class="text-black">Base de datos</h3>
-
+<h3> <font size = 5 color="#87CEFA" face="Candara">Base de datos:</font></h3>
 
 <ul>
 	<li>
@@ -37,9 +39,10 @@
 {{/admin}}
 
 
-<br><br>
+<br>
 </div> 
-<h3 class="text-black">Anuncios Publicados:</h3>
+<h3> <font size = 5 color="#87CEFA" face="Candara">Anuncios Publicados:</font></h3><br>
+
 {{#anuncios}}
 <div style="color: blue;">	
 	<a href="anuncio/{{id}}">{{nombre}}    {{asunto}}</a><br>
